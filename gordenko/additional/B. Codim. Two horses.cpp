@@ -18,20 +18,20 @@ void bfs(int x1, int y1, int x2, int y2, int n) {
         q.pop();
 
         if (cur_x == x2 && cur_y == y2) {
-            std::vector<std::pair<int, int>> path;
             int ans = 0;
             while (cur_x != x1 || cur_y != y1) {
                 ans++;
-                path.push_back({cur_x, cur_y});
                 int tmp_x = used[cur_x][cur_y].first;
                 int tmp_y = used[cur_x][cur_y].second;
                 cur_x = tmp_x;
                 cur_y = tmp_y;
             }
-            path.push_back({cur_x, cur_y});
-            std::cout << ans << '\n';
-            for (auto it = path.rbegin(); it != path.rend(); ++it) {
-                std::cout << it->first << ' ' << it->second << '\n';
+            if (ans % 2 == 0) {
+                std::cout << ans / 2;
+            } else if (ans > 8) {
+                std::cout << (ans + 1) / 2;
+            } else {
+                std::cout << -1;
             }
             return;
         }
@@ -48,13 +48,13 @@ void bfs(int x1, int y1, int x2, int y2, int n) {
 }
 
 int main() {
-    int n = 0;
-    std::cin >> n;
 
-    int x1, y1, x2, y2;
-    std::cin >> x1 >> y1 >> x2 >> y2;
+    char sym1 = 0, sym2 = 0;
+    int y1 = 0, y2 = 0;
+    std::cin >> sym1 >> y1 >> sym2 >> y2;
+    int x1 = sym1 - 'a' + 1, x2 = sym2 - 'a' + 1;
 
-    bfs(x1, y1, x2, y2, n);
+    bfs(x1, y1, x2, y2, 8);
 
     return 0;
 }
