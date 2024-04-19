@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <limits>
 
 int main() {
     long long n = 0, m = 0, s = 0;
@@ -11,7 +10,7 @@ int main() {
         std::cin >> g[i][0] >> g[i][1] >> g[i][2];
     }
 
-    std::vector<long long> minimums(n, std::numeric_limits<long long>::max());
+    std::vector<long long> minimums(n, 1e18);
     minimums[s - 1] = 0;
 
     for (long long i = 0; i < n; i++) {
@@ -20,7 +19,7 @@ int main() {
             long long to = edge[1] - 1;
             long long w = edge[2];
 
-            if (minimums[v] < std::numeric_limits<long long>::max() && minimums[to] > minimums[v] + w) {
+            if (minimums[v] < 1e18 && minimums[to] > minimums[v] + w) {
                 minimums[to] = minimums[v] + w;
             }
         }
@@ -34,8 +33,8 @@ int main() {
             long long to = edge[1] - 1;
             long long w = edge[2];
 
-            if (minimums[v] != std::numeric_limits<long long>::max() && minimums[to] > minimums[v] + w) {
-                minimums[to] = -std::numeric_limits<long long>::max() - 1;
+            if (minimums[v] != 1e18 && minimums[to] > minimums[v] + w) {
+                minimums[to] = -1e18 - 1;
                 negative_cycle[to] = true;
             }
 
@@ -46,7 +45,7 @@ int main() {
     }
 
     for (long long i = 0; i < minimums.size(); i++) {
-        if (minimums[i] == std::numeric_limits<long long>::max()) {
+        if (minimums[i] == 1e18) {
             std::cout << '*' << std::endl;
         }
         else if (negative_cycle[i]) {

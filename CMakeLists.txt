@@ -4,4 +4,4 @@ project(Algorythms_DataStructures)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Algorythms_DataStructures
-        "gordenko/additional/C. Codim. Balloons.cpp")
+        "gordenko/additional/E. Codim. Conveyor belt.cpp")
