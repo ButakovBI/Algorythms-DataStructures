@@ -1,0 +1,26 @@
+{
+    "scanner": {
+        "replicas": 1,
+        "memory": 256.4,
+        "cpu": 2,
+        "storage": 7823.12
+    },
+    "database_server": {
+        "replicas": 3,
+        "memory": 512.9,
+        "cpu": 4,
+        "storage": 10234.78
+    },
+    "kafka": {
+        "replicas": 2,
+        "memory": 128.5,
+        "cpu": 3,
+        "storage": 6345.22
+    },
+    "service4": {
+        "replicas": 1,
+        "memory": 64.3,
+        "cpu": 2,
+        "storage": 9348.57
+    }
+}
